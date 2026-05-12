@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sporta rezultāti.</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --accent: #38bdf8;
+            --text: #f1f5f9;
+            --danger: #ef4444;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            text-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+        }
+
+        a {
+            color: var(--accent);
+            transition: 0.3s;
+        }
+
+        .btn-add {
+            background: var(--accent);
+            color: var(--bg);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .btn-add:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px var(--accent);
+        }
+
+        table {
+            width: 100%;
+            max-width: 900px;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        th {
+            background: #334155;
+            padding: 15px;
+            text-align: left;
+            color: var(--accent);
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #334155;
+        }
+
+        tr:hover {
+            background: #2d3a4f;
+        }
+
+        .delete-link {
+            color: var(--danger);
+            font-weight: bold;
+        }
+
+        .delete-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Sporta rezultātu reģistrs.</h1>
+<form action="/meklet" method="get" style="margin-bottom:20px;">
+
+    <input
+        type="text"
+        name="q"
+        placeholder="Meklēt komandu vai rezultātu."
+        style="
+            padding:10px;
+            border-radius:8px;
+            border:none;
+            width:250px;
+        "
+    >
+
+    <button
+        type="submit"
+        style="
+            padding:10px 20px;
+            border:none;
+            border-radius:8px;
+            background:#38bdf8;
+            color:#0f172a;
+            font-weight:bold;
+            cursor:pointer;
+        "
+    >
+        Meklēt.
+    </button>
+
+
+
+</form>
+<a href='/?kart=ASC'>Kartot A→Z.</a>
+<br>
+<a href='/?kart=DESC'>Kartot Z→A.</a>
+<br>
+<a href="/pievienot">Pievienot rezultātu.</a>
+<br>
+<br>
+
+<table border="1" cellpadding="5">
+    <tr>
+        <th>ID.</th>
+        <th>Mājinieki.</th>
+        <th>Viesi.</th>
+        <th>Rezultāts.</th>
+        <th>Datums.</th>
+        <th>Darbības.</th>
+    </tr>
+
+    {% for r in rezultati %}
+    <tr>
+        <td>{{ r.id }}</td>
+        <td>{{ r.komanda_a }}</td>
+        <td>{{ r.komanda_b }}</td>
+        <td>{{ r.rezultats }}</td>
+        <td>{{ r.datums }}</td>
+        <td>
+            <a href="/dzest/{{ r.id }}" onclick="return confirm('Vai tiešām dzēst šo ierakstu?')">Dzēst.</a>
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+<br>
+<p>Kopā ierakstu: {{ skaits }}.</p>
+</body>
+</html>

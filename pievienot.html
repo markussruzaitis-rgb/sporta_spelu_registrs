@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pievienot rezultātu.</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #0f172a;
+            color: #f1f5f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #1e293b;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            width: 350px;
+        }
+
+        h1 {
+            padding-right: 10%;
+            margin-top: 0;
+            color: #38bdf8;
+            font-size: 1.5rem;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            background: #0f172a;
+            color: white;
+            box-sizing: border-box;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #38bdf8;
+            box-shadow: 0 0 5px #38bdf8;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #38bdf8;
+            border: none;
+            border-radius: 8px;
+            color: #0f172a;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #7dd3fc;
+            transform: translateY(-2px);
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #94a3b8;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Pievienot spēles rezultātu.</h1>
+<div>
+    <form method="POST">
+
+        <label>Mājinieku komanda: </label><br>
+        <input type="text" name="komanda_a" required><br><br>
+
+        <label>Viesu komanda: </label><br>
+        <input type="text" name="komanda_b" required><br><br>
+
+        <label>Rezultāts: </label><br>
+        <input type="text" name="rezultats" required><br><br>
+
+        <label>Datums: </label><br>
+        <input type="date" name="datums" required><br><br>
+
+        <button type="submit">Saglabāt.</button>
+
+    </form>
+
+    <br>
+    <a href="/">Atpakaļ.</a>
+</div>
+</body>
+</html>
